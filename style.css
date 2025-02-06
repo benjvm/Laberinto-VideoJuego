@@ -1,0 +1,27 @@
+canvas {
+    border: 1px solid black;
+    background-color: #f0f0f0;
+}
+
+.boton-nivel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #007BFF, #00C6FF);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.boton-nivel:hover {
+    background: linear-gradient(45deg, #0056b3, #0094cc);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translate(-50%, -50%) scale(1.05);
+}
