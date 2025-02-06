@@ -1,6 +1,6 @@
 const canvas = document.getElementById('laberinto');
 const ctx = canvas.getContext('2d');
-const tamañoCelda = 40;
+const tamañoCelda = 50;
 const numFilas = 10;
 const numColumnas = 10;
 
@@ -61,9 +61,15 @@ function dibujarLaberinto() {
 
     for (let fila = 0; fila < numFilas; fila++) {
         for (let columna = 0; columna < numColumnas; columna++) {
-            ctx.fillStyle = laberinto[fila][columna] === 1 ? '#000000' : '#ffffff';
+            if (laberinto[fila][columna] === 1) {
+                ctx.fillStyle = 'green';
+            } else {
+                ctx.fillStyle = 'white';
+            }
+            //dibuja el fondo de la celda
             ctx.fillRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
-            ctx.strokeStyle = '#cccccc';
+            //dibuja el borde de la celda
+            ctx.strokeStyle = 'silver';
             ctx.strokeRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
         }
     }
@@ -143,6 +149,11 @@ function mostrarGifVictoria() {
     }
 
     canvas.style.display = 'none';
+
+    const endText = document.createElement('h1');
+    endText.textContent = 'Felicitaciones! has completado el Juego';
+    endText.style.fontSize = '38px';
+    endText.style.fontFamily = 'cursive';
     
     const gifContainer = document.createElement('div');
     gifContainer.style.position = 'fixed';
@@ -164,9 +175,24 @@ function mostrarGifVictoria() {
     botonReinicio.style.fontSize = '18px';
     botonReinicio.addEventListener('click', reiniciarJuego);
 
+    gifContainer.appendChild(endText);
     gifContainer.appendChild(gif);
     gifContainer.appendChild(botonReinicio);
     document.body.appendChild(gifContainer);
+}
+
+function mostrarMenuInicio() {
+    const menu = document.createElement('div');
+    menu.innerHTML = `<h1>Bienvenido al Laberinto</h1><p>Usa las flechas del teclado para moverte</p><button onclick='iniciarJuego()'>Iniciar Juego</button>`;
+    menu.style.textAlign = 'center';
+    document.body.appendChild(menu);
+}
+
+function iniciarJuego() {
+    document.body.innerHTML = '';
+    document.body.appendChild(canvas);
+    dibujarLaberinto();
+    document.addEventListener('keydown', moverJugador);
 }
 
 function reiniciarJuego() {
