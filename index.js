@@ -181,20 +181,6 @@ function mostrarGifVictoria() {
     document.body.appendChild(gifContainer);
 }
 
-function mostrarMenuInicio() {
-    const menu = document.createElement('div');
-    menu.innerHTML = `<h1>Bienvenido al Laberinto</h1><p>Usa las flechas del teclado para moverte</p><button onclick='iniciarJuego()'>Iniciar Juego</button>`;
-    menu.style.textAlign = 'center';
-    document.body.appendChild(menu);
-}
-
-function iniciarJuego() {
-    document.body.innerHTML = '';
-    document.body.appendChild(canvas);
-    dibujarLaberinto();
-    document.addEventListener('keydown', moverJugador);
-}
-
 function reiniciarJuego() {
     const gifContainer = document.querySelector('div');
     if (gifContainer) document.body.removeChild(gifContainer);
