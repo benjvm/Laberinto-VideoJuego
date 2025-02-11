@@ -1,45 +1,31 @@
 const canvas = document.getElementById('laberinto');
 const ctx = canvas.getContext('2d');
-const tamañoCelda = 50;
-const numFilas = 10;
-const numColumnas = 10;
+const tamañoCelda = 25;
+const numFilas = 20;
+const numColumnas = 20;
 
 const niveles = [
     [
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-        [1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
-        [1, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-        [1, 0, 1, 1, 0, 1, 0, 1, 0, 1],
-        [1, 0, 1, 1, 0, 1, 0, 1, 0, 1],
-        [1, 0, 1, 1, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    ],
-    [
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-        [1, 0, 0, 1, 0, 1, 0, 0, 1, 1],
-        [1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
-        [1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
-        [1, 0, 1, 1, 1, 1, 0, 1, 0, 1],
-        [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
-        [1, 1, 1, 1, 0, 1, 1, 1, 0, 1],
-        [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    ],
-    [
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-        [1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-        [1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
-        [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-        [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-        [1, 1, 0, 0, 0, 0, 0, 1, 0, 1],
-        [1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
-        [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+        [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+        [0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+        [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+        [0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
+        [1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1],
+        [0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1],
+        [0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+        [0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+        [0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1],
+        [0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1],
+        [1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0],
+        [1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+        [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0]
     ]
 ];
 
@@ -47,14 +33,14 @@ let nivelActual = 0;
 let laberinto = niveles[nivelActual];
 
 const jugador = {
-    x: 0,
-    y: 0
-};
+    x: 10,
+    y: 9
+}
 
 const objetivo = {
-    x: 9,
-    y: 9
-};
+    x: 19,
+    y: 19
+}
 
 function dibujarLaberinto() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -125,10 +111,10 @@ function siguienteNivel() {
     nivelActual++;
     if (nivelActual < niveles.length) {
         laberinto = niveles[nivelActual];
-        jugador.x = 0;
-        jugador.y = 0;
-        objetivo.x = 9;
-        objetivo.y = 9;
+        jugador.x = 10;
+        jugador.y = 9;
+        objetivo.x = 19;
+        objetivo.y = 19;
         dibujarLaberinto();
         document.body.removeChild(document.querySelector('button'));
     } else {
@@ -145,16 +131,11 @@ function mostrarGifVictoria() {
     canvas.style.display = 'none';
 
     const endText = document.createElement('h1');
-    endText.textContent = 'Felicitaciones! has completado el Juego';
-    endText.style.fontSize = '38px';
-    endText.style.fontFamily = 'cursive';
+    endText.textContent = 'Felicidades! has completado el laberinto';
+    endText.classList.add('endText');
     
     const gifContainer = document.createElement('div');
-    gifContainer.style.position = 'fixed';
-    gifContainer.style.top = '50%';
-    gifContainer.style.left = '50%';
-    gifContainer.style.transform = 'translate(-50%, -50%)';
-    gifContainer.style.textAlign = 'center';
+    gifContainer.classList.add('gifDiv');
 
     const gif = document.createElement('img');
     gif.src = 'https://media.tenor.com/C0mP_I660_0AAAAi/cat-dance.gif';
@@ -178,11 +159,12 @@ function reiniciarJuego() {
     
     nivelActual = 0;
     laberinto = niveles[nivelActual];
-    jugador.x = 0;
-    jugador.y = 0;
-    objetivo.x = 9;
-    objetivo.y = 9;
+    jugador.x = 10;
+    jugador.y = 9;
+    objetivo.x = 19;
+    objetivo.y = 19;
     
+    canvas.style.display = 'block';
     dibujarLaberinto();
 }
 

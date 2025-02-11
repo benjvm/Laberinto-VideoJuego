@@ -6,8 +6,8 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 800px;
 }
+
 .boton-siguiente-nivel {
 position: absolute;
 top: 80%;
@@ -31,7 +31,7 @@ background-color: #218838;
     display : block;
     margin :20px auto;
     padding : 15px 30px;
-    font-Size : 18px;
+    font-Size : 20px;
     cursor: pointer;
     background-color: #af1212;
     color: white;
@@ -42,4 +42,17 @@ background-color: #218838;
 
 .boton-reinicio:hover {
     background-color: #f70505;
+}
+
+.endText {
+    font-Size : 38px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.gifDiv {
+    position : fixed;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    text-Align : center;
 }
