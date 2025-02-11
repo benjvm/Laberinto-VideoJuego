@@ -116,13 +116,7 @@ function moverJugador(event) {
 function mostrarBotonSiguienteNivel() {
     const botonSiguienteNivel = document.createElement('button');
     botonSiguienteNivel.textContent = 'Siguiente nivel';
-    botonSiguienteNivel.style.position = 'absolute';
-    botonSiguienteNivel.style.top = '50%';
-    botonSiguienteNivel.style.left = '50%';
-    botonSiguienteNivel.style.transform = 'translate(-50%, -50%)';
-    botonSiguienteNivel.style.padding = '10px 20px';
-    botonSiguienteNivel.style.fontSize = '20px';
-    botonSiguienteNivel.style.cursor = 'pointer';
+    botonSiguienteNivel.classList.add('boton-siguiente-nivel');
     botonSiguienteNivel.addEventListener('click', siguienteNivel);
     document.body.appendChild(botonSiguienteNivel);
 }
@@ -169,10 +163,7 @@ function mostrarGifVictoria() {
     
     const botonReinicio = document.createElement('button');
     botonReinicio.textContent = 'Reiniciar Juego';
-    botonReinicio.style.display = 'block';
-    botonReinicio.style.margin = '20px auto';
-    botonReinicio.style.padding = '15px 30px';
-    botonReinicio.style.fontSize = '18px';
+    botonReinicio.classList.add('boton-reinicio');
     botonReinicio.addEventListener('click', reiniciarJuego);
 
     gifContainer.appendChild(endText);
@@ -192,7 +183,6 @@ function reiniciarJuego() {
     objetivo.x = 9;
     objetivo.y = 9;
     
-    canvas.style.display = 'block';
     dibujarLaberinto();
 }
 

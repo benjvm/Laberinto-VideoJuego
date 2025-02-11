@@ -1,27 +1,45 @@
 canvas {
     border: 1px solid black;
     background-color: #f0f0f0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+}
+.boton-siguiente-nivel {
+position: absolute;
+top: 80%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 10px 20px;
+font-size: 20px;
+cursor: pointer;
+background-color: #28a745;
+color: white;
+border: none;
+border-radius: 5px;
+transition: background-color 0.3s;
 }
 
-.boton-nivel {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 12px 24px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(45deg, #007BFF, #00C6FF);
-    border: none;
-    border-radius: 8px;
+.boton-siguiente-nivel:hover {
+background-color: #218838;
+}
+
+.boton-reinicio {
+    display : block;
+    margin :20px auto;
+    padding : 15px 30px;
+    font-Size : 18px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    background-color: #af1212;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.boton-nivel:hover {
-    background: linear-gradient(45deg, #0056b3, #0094cc);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transform: translate(-50%, -50%) scale(1.05);
+.boton-reinicio:hover {
+    background-color: #f70505;
 }
