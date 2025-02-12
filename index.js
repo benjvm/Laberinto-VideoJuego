@@ -32,9 +32,25 @@ const niveles = [
 let nivelActual = 0;
 let laberinto = niveles[nivelActual];
 
+const imagenArbusto = new Image();
+imagenArbusto.src = "Imagenes/arbusto.png";
+
+const imagenTierra = new Image();
+imagenTierra.src = "Imagenes/tierra.jpg";
+
+const imagenJugadorRight = new Image();
+imagenJugadorRight.src = "Imagenes/player-right.png";
+
+const imagenJugadorLeft = new Image();
+imagenJugadorLeft.src = "Imagenes/player-left.png";
+
+const imagenObjetivo = new Image();
+imagenObjetivo.src = "Imagenes/meta.png";
+
 const jugador = {
     x: 10,
-    y: 9
+    y: 9,
+    direccion: 'right'
 }
 
 const objetivo = {
@@ -48,23 +64,22 @@ function dibujarLaberinto() {
     for (let fila = 0; fila < numFilas; fila++) {
         for (let columna = 0; columna < numColumnas; columna++) {
             if (laberinto[fila][columna] === 1) {
-                ctx.fillStyle = 'green';
+                ctx.drawImage(imagenArbusto, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             } else {
-                ctx.fillStyle = 'white';
+                ctx.drawImage(imagenTierra, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             }
-            //dibuja el fondo de la celda
-            ctx.fillRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             //dibuja el borde de la celda
             ctx.strokeStyle = 'silver';
             ctx.strokeRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
         }
     }
 
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(jugador.x * tamañoCelda, jugador.y * tamañoCelda, tamañoCelda, tamañoCelda);
-
-    ctx.fillStyle = 'red';
-    ctx.fillRect(objetivo.x * tamañoCelda, objetivo.y * tamañoCelda, tamañoCelda, tamañoCelda);
+    if (jugador.direccion === 'right') {
+        ctx.drawImage(imagenJugadorRight, jugador.x * tamañoCelda, jugador.y * tamañoCelda, tamañoCelda, tamañoCelda);
+    } else {
+        ctx.drawImage(imagenJugadorLeft, jugador.x * tamañoCelda, jugador.y * tamañoCelda, tamañoCelda, tamañoCelda);
+    }
+    ctx.drawImage(imagenObjetivo, objetivo.x * tamañoCelda, objetivo.y * tamañoCelda, tamañoCelda, tamañoCelda);
 }
 
 function moverJugador(event) {
@@ -82,13 +97,13 @@ function moverJugador(event) {
             y: jugador.y + movimiento[0] 
         };
 
-        if (
-            nuevaPosicion.x >= 0 && nuevaPosicion.x < numColumnas &&
-            nuevaPosicion.y >= 0 && nuevaPosicion.y < numFilas &&
-            laberinto[nuevaPosicion.y][nuevaPosicion.x] === 0
-        ) {
+        if (esMovimientoValido(nuevaPosicion.x, nuevaPosicion.y)) {
             jugador.x = nuevaPosicion.x;
             jugador.y = nuevaPosicion.y;
+
+            // Actualizar la dirección del jugador
+            if (event.key === 'ArrowRight') jugador.direccion = 'right';
+            if (event.key === 'ArrowLeft') jugador.direccion = 'left';
         }
 
         if (jugador.x === objetivo.x && jugador.y === objetivo.y) {
@@ -97,6 +112,13 @@ function moverJugador(event) {
 
         dibujarLaberinto();
     }
+}
+
+
+function esMovimientoValido(x, y) {
+    return x >= 0 && x < numColumnas &&
+           y >= 0 && y < numFilas &&
+           laberinto[y][x] === 0;
 }
 
 function mostrarBotonSiguienteNivel() {
@@ -169,4 +191,7 @@ function reiniciarJuego() {
 }
 
 document.addEventListener('keydown', moverJugador);
-dibujarLaberinto();
+imagenArbusto.onload = dibujarLaberinto;
+imagenTierra.onload = dibujarLaberinto;
+imagenObjetivo.onload = dibujarLaberinto;
+imagenJugador.onload = dibujarLaberinto;
