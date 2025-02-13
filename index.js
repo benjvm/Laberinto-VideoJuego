@@ -90,7 +90,7 @@ function dibujarLaberinto() {
             } else {
                 ctx.drawImage(imagenTierra, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             }
-            //dibuja el borde de la celda
+
             ctx.strokeStyle = 'silver';
             ctx.strokeRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
         }
@@ -102,6 +102,29 @@ function dibujarLaberinto() {
         ctx.drawImage(imagenJugadorLeft, jugador.x * tamañoCelda, jugador.y * tamañoCelda, tamañoCelda, tamañoCelda);
     }
     ctx.drawImage(imagenObjetivo, objetivo.x * tamañoCelda, objetivo.y * tamañoCelda, tamañoCelda, tamañoCelda);
+}
+
+function mostrarMenuInicio() {
+    canvas.style.display = 'none';
+
+    const menuContainer = document.createElement('div');
+    menuContainer.classList.add('menu-inicio');
+
+    const titulo = document.createElement('h1');
+    titulo.textContent = 'Bienvenido al Laberinto';
+
+    const botonInicio = document.createElement('button');
+    botonInicio.textContent = 'Start';
+    botonInicio.classList.add('boton-inicio');
+    botonInicio.addEventListener('click', () => {
+        document.body.removeChild(menuContainer);
+        canvas.style.display = 'block';
+        dibujarLaberinto();
+    });
+
+    menuContainer.appendChild(titulo);
+    menuContainer.appendChild(botonInicio);
+    document.body.appendChild(menuContainer);
 }
 
 function moverJugador(event) {
@@ -123,7 +146,6 @@ function moverJugador(event) {
             jugador.x = nuevaPosicion.x;
             jugador.y = nuevaPosicion.y;
 
-            // Actualizar la dirección del jugador
             if (event.key === 'ArrowRight') jugador.direccion = 'right';
             if (event.key === 'ArrowLeft') jugador.direccion = 'left';
         }
@@ -213,6 +235,7 @@ function reiniciarJuego() {
 }
 
 document.addEventListener('keydown', moverJugador);
+window.onload = mostrarMenuInicio;
 imagenArbusto.onload = dibujarLaberinto;
 imagenTierra.onload = dibujarLaberinto;
 imagenObjetivo.onload = dibujarLaberinto;
