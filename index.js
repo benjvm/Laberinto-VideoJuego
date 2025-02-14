@@ -58,7 +58,7 @@ const imagenArbusto = new Image();
 imagenArbusto.src = "Imagenes/newArbusto.png";
 
 const imagenTierra = new Image();
-imagenTierra.src = "Imagenes/tierra.jpg";
+imagenTierra.src = "";
 
 const imagenJugadorRight = new Image();
 imagenJugadorRight.src = "Imagenes/player-right.png";
@@ -112,6 +112,8 @@ function mostrarMenuInicio() {
 
     const titulo = document.createElement('h1');
     titulo.textContent = 'Bienvenido al Laberinto';
+    titulo.classList.add('titulo-inicio');
+
 
     const botonInicio = document.createElement('button');
     botonInicio.textContent = 'Start';

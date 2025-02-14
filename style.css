@@ -1,12 +1,10 @@
 body {
-    background-image: url('Imagenes/background.png');
+    background-image: url('https://i0.wp.com/boingboing.net/wp-content/uploads/2019/09/68747470733a2f2f692e696d6775722e636f6d2f686e6661385a362e706e67.png?fit=1&quality=55&ssl=1&resize=620%2C4000');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 88vh;
-    margin: 0;
-    font-size: 30pt;
-    font-family: "Press Start 2p";
+    background-size:cover;
+    background-attachment: fixed;
+    height: 80vh;
 }
 
 canvas {
@@ -96,4 +94,11 @@ background-color: #218838;
     box-shadow: none;
     position: relative;
     top: 0.2em;
+}
+
+.titulo-inicio {
+    font-family: "Press Start 2p";
+    font-size: 65px;
+    margin-left: 220px;
+    color: rgb(214, 144, 13);
 }
