@@ -1,8 +1,9 @@
 body {
-    background-image: url('Imagenes/Captura de pantalla 2025-02-13 134148.png');
-    background-position: 0%;
+    background-image: url('Imagenes/background.png');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    height: 88vh;
     margin: 0;
     font-size: 30pt;
     font-family: "Press Start 2p";

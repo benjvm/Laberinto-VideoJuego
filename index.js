@@ -55,7 +55,7 @@ let nivelActual = 0;
 let laberinto = niveles[nivelActual];
 
 const imagenArbusto = new Image();
-imagenArbusto.src = "Imagenes/arbusto.png";
+imagenArbusto.src = "Imagenes/newArbusto.png";
 
 const imagenTierra = new Image();
 imagenTierra.src = "Imagenes/tierra.jpg";
