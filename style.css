@@ -1,14 +1,21 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
 body {
-    background-image: url('https://i0.wp.com/boingboing.net/wp-content/uploads/2019/09/68747470733a2f2f692e696d6775722e636f6d2f686e6661385a362e706e67.png?fit=1&quality=55&ssl=1&resize=620%2C4000');
+    background-image: url('Imagenes/background.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     background-attachment: fixed;
-    height: 80vh;
+    height: 100vh;
+    margin: 0;
 }
 
 canvas {
-    border: 1px solid black;
     background-color: #f0f0f0;
     padding-left: 0;
     padding-right: 0;
@@ -17,47 +24,115 @@ canvas {
     margin-right: auto;
     display: block;
     width: 650px;
+    border: 10px solid #226b88;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.menu-inicio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10;
+    width: 40%;
+    border: 10px solid #226b88;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    background-color: #88a8df;
+}
+
+.titulo-inicio {
+    font-family: "Press Start 2p";
+    font-size: 50px;
+    color: #073446;
+    margin: 0;
+    text-align:center;
+    margin-top: 20px;
+}
+
+.texto-inicio {
+    font-family: "Press Start 2p";
+    font-size: 13px;
+    color: white;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.boton-inicio {
+    text-align: center;
+    display: inline-block;
+    margin: 20px auto;
+    font-weight: bold;
+    padding: 10px 20px; 
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: rgb(136, 134, 134);
+    border-radius: 7px;
+    box-shadow: 0 .2em gray;
+    cursor: pointer;
+    font-family: 'Press Start 2p';
+    font-size: 16px;
+}
+
+.boton-inicio:active {
+    box-shadow: none;
+    position: relative;
+    top: 0.2em;
 }
 
 .boton-siguiente-nivel {
-position: absolute;
-top: 85%;
-left: 50%;
-transform: translate(-50%, -50%);
-padding: 10px 20px;
-font-size: 20px;
-cursor: pointer;
-background-color: #28a745;
-color: white;
-border: none;
-border-radius: 5px;
-transition: background-color 0.3s;
+    text-align: center;
+    display:flex;
+    margin: 20px auto;
+    font-weight: bold;
+    padding: 15px 20px; 
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: rgb(136, 134, 134);
+    border-radius: 7px;
+    box-shadow: 0 .2em gray;
+    cursor: pointer;
+    font-family: 'Press Start 2p';
+    font-size: 18px;
 }
 
-.boton-siguiente-nivel:hover {
-background-color: #218838;
+.boton-siguiente-nivel:active {
+    box-shadow: none;
+    position: relative;
+    top: 0.2em;
 }
 
 .boton-reinicio {
-    display : block;
-    margin :20px auto;
-    padding : 15px 30px;
-    font-Size : 20px;
+    text-align: center;
+    display:block;
+    margin: 20px auto;
+    font-weight: bold;
+    padding: 15px 20px; 
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: rgb(136, 134, 134);
+    border-radius: 7px;
+    box-shadow: 0 .2em gray;
     cursor: pointer;
-    background-color: #af1212;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    font-family: 'Press Start 2p';
+    font-size: 18px;
 }
 
-.boton-reinicio:hover {
-    background-color: #f70505;
+.boton-reinicio:active {
+    box-shadow: none;
+    position: relative;
+    top: 0.2em;
 }
 
 .endText {
-    font-Size : 38px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-Size : 40px;
+    font-family:'Press Start 2p';
+    margin-left: 300px;
+    margin-right: 300px;
+    color: #073446;
 }
 
 .gifDiv {
@@ -66,39 +141,4 @@ background-color: #218838;
     left : 50%;
     transform : translate(-50%, -50%);
     text-Align : center;
-}
-
-@font-face {
-    font-family: 'Press Start 2p';
-    src: url('https://fonts.gstatic.com/s/pressstart2p/v9/e3t4euGpG4JNG2C.ttf') format('truetype');
-}
-
-.boton-inicio{
-    text-align: center;
-    display: inline-block;
-    margin:5px;
-    font-weight: bold;
-    padding: 10px 0 10px 10px ;
-    background-color: lightgray;
-    text-shadow: -1px -1px black, 1px 1px white;
-    color: gray;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -o-border-radius: 7px;
-    border-radius: 7px;
-    box-shadow: 0 .2em gray; 
-    cursor: pointer;
-    font-family: 'Press Start 2p';
-}
-.boton-inicio:active{
-    box-shadow: none;
-    position: relative;
-    top: 0.2em;
-}
-
-.titulo-inicio {
-    font-family: "Press Start 2p";
-    font-size: 65px;
-    margin-left: 220px;
-    color: rgb(214, 144, 13);
 }

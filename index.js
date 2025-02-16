@@ -54,11 +54,11 @@ const niveles = [
 let nivelActual = 0;
 let laberinto = niveles[nivelActual];
 
-const imagenArbusto = new Image();
-imagenArbusto.src = "Imagenes/newArbusto.png";
+const imagenPared = new Image();
+imagenPared.src = "Imagenes/piedra.jpg";
 
 const imagenTierra = new Image();
-imagenTierra.src = "";
+imagenTierra.src = "Imagenes/tierra.png";
 
 const imagenJugadorRight = new Image();
 imagenJugadorRight.src = "Imagenes/player-right.png";
@@ -86,13 +86,13 @@ function dibujarLaberinto() {
     for (let fila = 0; fila < numFilas; fila++) {
         for (let columna = 0; columna < numColumnas; columna++) {
             if (laberinto[fila][columna] === 1) {
-                ctx.drawImage(imagenArbusto, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
+                ctx.drawImage(imagenPared, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             } else {
                 ctx.drawImage(imagenTierra, columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
             }
 
-            ctx.strokeStyle = 'silver';
-            ctx.strokeRect(columna * tamañoCelda, fila * tamañoCelda, tamañoCelda, tamañoCelda);
+            
+            
         }
     }
 
@@ -114,9 +114,12 @@ function mostrarMenuInicio() {
     titulo.textContent = 'Bienvenido al Laberinto';
     titulo.classList.add('titulo-inicio');
 
+    const texto = document.createElement('p');
+    texto.textContent = 'Controles: Muevete con las flechas del teclado.';
+    texto.classList.add('texto-inicio');
 
     const botonInicio = document.createElement('button');
-    botonInicio.textContent = 'Start';
+    botonInicio.textContent = 'Iniciar';
     botonInicio.classList.add('boton-inicio');
     botonInicio.addEventListener('click', () => {
         document.body.removeChild(menuContainer);
@@ -125,6 +128,7 @@ function mostrarMenuInicio() {
     });
 
     menuContainer.appendChild(titulo);
+    menuContainer.appendChild(texto);
     menuContainer.appendChild(botonInicio);
     document.body.appendChild(menuContainer);
 }
@@ -238,7 +242,6 @@ function reiniciarJuego() {
 
 document.addEventListener('keydown', moverJugador);
 window.onload = mostrarMenuInicio;
-imagenArbusto.onload = dibujarLaberinto;
+imagenPared.onload = dibujarLaberinto;
 imagenTierra.onload = dibujarLaberinto;
 imagenObjetivo.onload = dibujarLaberinto;
-imagenJugador.onload = dibujarLaberinto;
