@@ -55,19 +55,19 @@ let nivelActual = 0;
 let laberinto = niveles[nivelActual];
 
 const imagenPared = new Image();
-imagenPared.src = "Imagenes/piedra.jpg";
+imagenPared.src = "assets/piedra.jpg";
 
 const imagenTierra = new Image();
-imagenTierra.src = "Imagenes/tierra.png";
+imagenTierra.src = "assets/tierra.png";
 
 const imagenJugadorRight = new Image();
-imagenJugadorRight.src = "Imagenes/player-right.png";
+imagenJugadorRight.src = "assets/player-right.png";
 
 const imagenJugadorLeft = new Image();
-imagenJugadorLeft.src = "Imagenes/player-left.png";
+imagenJugadorLeft.src = "assets/player-left.png";
 
 const imagenObjetivo = new Image();
-imagenObjetivo.src = "Imagenes/meta.png";
+imagenObjetivo.src = "assets/meta.png";
 
 const jugador = {
     x: 10,
